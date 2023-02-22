@@ -1,0 +1,67 @@
+﻿@model LoginViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title> Login </title>
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div class='card'>
+        <form class='card__form' method="post" asp-action="Login">
+            <h2 class='form__title'>Login</h2>
+            <div class="form__row">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                @*<span class="text-danger" asp-validation-for="Email"></span><br />
+                <span class="text-danger" asp-validation-for="Password"></span>
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+            </div>
+            <div class='form__row'>
+                <input class='card__input d--block' asp-for="Email" placeholder='Username' type='email' maxlength="32" autofocus>
+                
+            </div>
+            <div class='form__row'>
+                <input class='card__input d--block' asp-for="Password" placeholder='Password' type='password' maxlength="32">
+            </div>
+            <div class='form__row last'>
+                <div class='spinner'></div>
+                <button type="submit" class='btn btn--primary d--block'>Login</button>
+            </div><br /><hr />
+            <div class="form__row">
+                <p class="message">Not registered? <a asp-controller="account" asp-action="signup">Create an account</a></p>
+            </div>
+        </form>
+    </div>
+        <!--<div class="login-page">
+            <!-- Form-->
+        <!--@*<div class="pen-footer"><a href="https://www.behance.net/gallery/30478397/Login-Form-UI-Library" target="_blank"><i class="material-icons">arrow_backward</i>View on Behance</a><a href="https://github.com/andyhqtran/UI-Library/tree/master/Login%20Form" target="_blank">View on Github<i class="material-icons">arrow_forward</i></a></div>*@-->
+        <!--<!--<div class="form">
+            <div class="login">
+                <div class="login-header">
+                    <h3>LOGIN</h3>-->
+        <!--@*<p>Please enter your credentials to login.</p>*@-->
+        <!--</div>
+            </div>
+            <form asp-action="login" class="login-form" method="post">
+                <div class="form-group">
+                    Html.ValidationSummary(true, "", new { class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <input asp-for="Email" type="email" placeholder="email" />
+                </div>
+                <div class="form-group">
+                    <input asp-for="Password" type="password" placeholder="password" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <p class="message">Not registered? <a asp-controller="account" asp-action="signup">Create an account</a></p>
+                </div>
+            </form>
+        </div>-->
+        <!--</div>-->
+        <script src="~/js/JavaScript.js"></script>
+</body> 
+</html>

@@ -1,0 +1,59 @@
+﻿@model SignUpViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title> Login </title>
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div class='card'>
+        <form class='card__form' method="post" asp-action="SignUp">
+            <h2 class='form__title'>Add Account</h2>
+            <div class="form__row">
+                <div asp-validation-summary="All" class="text-danger"></div>
+            </div>
+            <div class="form__row" style="margin:15px;">
+                <input asp-for="UserName" type="text" placeholder="Enter Name" class="card__input d--block" autofocus />
+            </div>
+            <div class="form__row" style="margin:15px;">
+                <input asp-for="UserEmail" type="email" placeholder="Enter Email" class="card__input d--block" />
+            </div>
+            <div class="form__row" style="margin:15px;">
+                <input asp-for="UserMobileNo" type="text" placeholder="Enter Mobile-no" class="card__input d--block" />
+            </div>
+            <div class="form__row" style="margin:15px;">
+                <input asp-for="UserDob" type="date" placeholder="Enter BirthDate" class="card__input d--block" />
+            </div>
+            <div class="form__row" style="margin:15px;">
+                <input asp-for="UserPassword" type="password" placeholder="Enter Password" class="card__input d--block" />
+            </div>
+            <div class="form__row" style="margin:15px;">
+                <input asp-for="ConfirmPassword" placeholder="Enter ConfirmPassword" class="card__input d--block" />
+            </div>
+            @*<div class="form__row">
+            <span class="text-danger" asp-validation-for="Email"></span><br />
+            <span class="text-danger" asp-validation-for="Password"></span>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </div><br />
+        <div class='form__row'>
+            <input class='card__input d--block' asp-for="Email" placeholder='Username' type='email' maxlength="32">
+        </div>
+        <div class='form__row'>
+            <input class='card__input d--block' asp-for="Password" placeholder='Password' type='password' maxlength="32">
+        </div>*@
+            <div class='form__row last'>
+                <div class='spinner'></div>
+                <button type="submit" class='btn btn--primary d--block'>Add Account</button>
+            </div><br /><hr />
+            <div class="form__row">
+                <p class="message">already have an account? Go -  <a asp-controller="account" asp-action="login">Login</a></p>
+            </div>
+        </form>
+    </div>
+    <script src="~/js/JavaScript.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+﻿@model User
+@{
+    Layout = "_Layout";
+}
+<!--<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>My Account Details</h1>
+            <hr /><br />
+            <table>
+                <tr class="m-2">
+                    <td>Name </td>
+                    <td>:</td>
+                    <td></td>
+                </tr>
+            </table>-->
+            @*<h3>Name : @Model.UserName</h3>
+                <h3>Email : @Model.UserEmail</h3>
+                <h3>Mobile no : @Model.UserMobileNo</h3>
+                <h3>BirthDate : @Model.UserDob</h3>
+                <p>Created on : @Model.CreatedOn</p>*@
+        <!--</div>
+    </div>
+</div>-->
+
+<h1>Account Details</h1><hr />
+<div class="container">
+        <div>
+            <dl class="row">
+                <dt class="col-sm-2">
+                    User Name
+                </dt>
+                <dd class="col-sm-10">
+                    @Model.UserName
+                </dd>
+                <dt class="col-sm-2">
+                    Email Address
+                </dt>
+                <dd class="col-sm-10">
+                    @Model.UserEmail
+                </dd>
+                <dt class="col-sm-2">
+                    Mobile Number
+                </dt>
+                <dd class="col-sm-10">
+                    @Model.UserMobileNo
+                </dd>
+                <dt class="col-sm-2">
+                    BirthDate
+                </dt>
+                <dd class="col-sm-10">
+                    @Model.UserDob
+                </dd>
+                <dt class="col-sm-2">
+                    Created on
+                </dt>
+                <dd class="col-sm-10">
+                    @Model.CreatedOn
+                </dd>
+            </dl>
+        </div>
+    <div>
+        <a asp-action="Index" asp-controller="Home" class=" btn btn-outline-primary">< Back</a>
+    </div>
+</div>

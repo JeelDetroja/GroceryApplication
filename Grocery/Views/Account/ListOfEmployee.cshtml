@@ -1,0 +1,71 @@
+﻿@model List<User>
+@{
+    Layout = "_Layout";
+}
+
+<h1>List of all Employee</h1>
+<br/>
+<p>
+    <a asp-action="CreateEmployee" asp-controller="Account"  class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                MobileNo
+            </th>
+            <th>
+                Dob
+            </th>
+            <th>
+                CreatedOn
+            </th>
+            <th>
+                isActivated
+            </th>
+            <th>
+                Delete
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserMobileNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserDob)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActivated)
+            </td>
+            <td>
+                <a asp-action="DeleteEmployee" asp-controller="Account" asp-route-id="@item.UserId" onclick="return confirm('Are you sure you want to delete @item.UserName Employee ?');" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

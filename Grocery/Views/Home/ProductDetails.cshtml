@@ -1,0 +1,54 @@
+﻿@model ProductViewModel
+@{
+    Layout = "_Layout";
+}
+
+<h2 class="display-4">
+    Product Details
+</h2>
+<br />
+<div class="container">
+    <form method="post" asp-action="AddItem" asp-controller="Cart">
+        <div class="row">
+            <div class="col-md-4">
+                <input asp-for="ProductId" hidden />
+                <img class="card-img-top" src=@Model.ProductPhotoPath alt="no img" style="height:300px;width:300px;">
+                @*<img src="~/img/product/Book3.jpg" class="img-fluid" style="height:120px;width:auto;" />*@
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>@Model.ProductName</h2>
+                    </div>
+                </div><hr /><br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4 class="label label-primary">Price : <span class="text-primary">₹ @Model.Price</span> <input asp-for="Price" hidden /> <span class="text-body" style="text-decoration-line:line-through;">₹ @Model.ProductPrice</span></h4>
+                        <br />
+                        <h6 class="label label-primary">Category : <span class="text-primary">@Model.ProductCategoryName</span></h6>
+                        <br />
+                        <h6 class="label label-primary">Description : <span class="description">@Model.Description</span></h6>
+                    </div>
+                </div><br />
+                <div class="container">
+                    <input type="button" onclick="decrementValue()" value="-" />
+                    <input type="text" asp-for="Quantity" name="quantity" value="1" maxlength="2" max="10" size="1" id="number" />
+                    <input type="button" onclick="incrementValue()" value="+" />
+                </div>
+            </div>
+        </div><br />
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-8">
+                <a class="btn btn-outline-primary" asp-action="Index" asp-controller="home">< Back</a>&emsp;
+                @if (User.IsInRole("Customer"))
+                {
+                    <button type="submit" class="btn btn-danger">Add To Cart</button>
+                }
+
+            </div>
+        </div>
+    </form>
+    
+</div>

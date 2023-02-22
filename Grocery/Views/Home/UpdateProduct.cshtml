@@ -1,0 +1,68 @@
+﻿@model ProductUpdateViewModel
+@{
+    Layout = "_Layout";
+}
+
+<form method="post" enctype="multipart/form-data" asp-controller="home" asp-action="UpdateProduct">
+    <input asp-for="CreatedBy" hidden />
+    <input asp-for="UpdatedBy" hidden />
+    <input asp-for="isActivated" hidden />
+    <input asp-for="ProductId" hidden />
+    <div class="row">
+        <div asp-validation-summary="All" class="text-danger"></div>
+    </div>
+    <div class="row" style="margin:15px;">
+        <label asp-for="ProductName" class="form-check-label col-md-3"></label>
+        <div class="col-md-5">
+            <input asp-for="ProductName" type="text" placeholder="Enter ProductName" class="form-control" autofocus />
+        </div>
+    </div>
+    <div class="row" style="margin:15px;">
+        <label asp-for="ProductCategoryId" class="form-check-label col-md-3"></label>
+        <div class="col-md-5">
+            <select asp-for="ProductCategoryId" asp-items="Html.GetEnumSelectList<ProductCategoryEnum>()" class="form-control">
+                <option value="">Choose Category</option>
+            </select>
+        </div>
+    </div>
+    <div class="row" style="margin:15px;">
+        <label asp-for="ProductPrice" class="form-check-label col-md-3"></label>
+        <div class="col-md-5">
+            <input asp-for="ProductPrice" type="number" placeholder="Enter ProductPrice" class="form-control" />
+        </div>
+    </div>
+    <div class="row" style="margin:15px;">
+        <label asp-for="Discount" class="form-check-label col-md-3"></label>
+        <div class="col-md-5">
+            <input asp-for="Discount" type="number" placeholder="Discount" class="form-control" />
+        </div>
+    </div>
+    <div class="row" style="margin:15px;">
+        <label asp-for="Description" class="form-check-label col-md-3"></label>
+        <div class="col-md-5">
+            <textarea asp-for="Description" placeholder="Enter Description" class="form-control"></textarea>
+        </div>
+    </div>
+    <input hidden asp-for="ProductPhotoPath">
+    @*<div class="row" style="margin:15px;">
+            <img src="@Model.ProductPhotoPath" alt="no photo" class="img-fluid" style="height:150px; width:auto;" />
+        </div>*@
+    <div class="row" style="margin:15px;">
+        <label asp-for="Photo" class="form-check-label col-md-3"></label>
+        <div class="col-md-5">
+            <div class="custom-file">
+                <input asp-for="Photo" class="custom-file-input" id="customFile">
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row" style="margin:15px;">
+        <div class="col-md-3">
+            <a class="btn btn-outline-danger" asp-action="index" asp-controller="home">< Cancel</a>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="form-control btn-primary">Update</button>
+        </div>
+    </div>
+</form>

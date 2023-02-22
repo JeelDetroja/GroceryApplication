@@ -1,0 +1,35 @@
+﻿@model List<ProductViewModel>
+
+@{
+    ViewData["Title"] = "Product Page";
+}
+
+<div class="container">
+    @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+    {
+    <div class="row">
+        <a class="btn btn-lg btn-primary" asp-controller="home" asp-action="CreateProduct">Add New Product</a>
+    </div><br/>
+    }
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3" style="margin:12px;">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src=@item.ProductPhotoPath alt="no img" style="height:200px;width:auto;">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.ProductName</h5><hr />
+                        <p class="card-text">Price : @item.Price</p>
+                        <a asp-controller="Home" asp-action="ProductDetails" asp-route-id="@item.ProductId" class="btn btn-info">View Details</a>
+                        @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+                        {
+                            <a asp-controller="Home" asp-action="UpdateProduct" asp-route-id="@item.ProductId" class="btn btn-sm btn-outline-warning">Edit</a>
+                            <a asp-controller="Home" asp-action="ProductDelete" asp-route-id="@item.ProductId" onclick="return confirm('Are you sure you want to delete item - @item.ProductName ?');" class="btn btn-sm btn-danger">Delete</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

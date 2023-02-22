@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Grocery.ViewModels.OrderViewModel>
+@{
+    Layout = "_Layout";
+}
+<h2>Order List</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr class="thead-light">
+            @*<th>
+                    @Html.DisplayNameFor(model => model.BookId)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GrandTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeliveredDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isDelivered)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.BookId)
+        </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GrandTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDate)
+            </td>
+            @if (item.isDelivered == false)
+            {
+                <td>
+                    Order Not Delivered
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeliveredDate)
+                </td>
+            }
+            @if (item.isDelivered == false)
+            {
+                <td>
+                    <a asp-action="DeliveredOrder" asp-controller="Home" class="btn btn-outline-info" asp-route-model="@item.OrderId">Delivered Order</a>
+                </td>
+            }
+            else
+            {
+                <td>
+                    Order Delivered
+                </td>
+            }
+
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="index" class=" btn btn-outline-primary">Home</a>
+</div>
